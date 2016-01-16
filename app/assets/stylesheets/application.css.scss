@@ -13,4 +13,14 @@
  *= require_tree .
  *= require_self
  */
+@import "materialize/components/color";
+$primary-color: color("blue", "lighten-2") !default;
+$secondary-color: color("orange", "darken-2") !default;
 @import 'materialize';
+
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.25));
+}

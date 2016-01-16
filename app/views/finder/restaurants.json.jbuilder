@@ -8,4 +8,5 @@ json.restaurants @restaurants do |restaurant|
   json.openingHours restaurant.opening_hours
   json.lat restaurant.lat
   json.lng restaurant.lng
+  json.address restaurant.vicinity
 end
