@@ -15,7 +15,5 @@
 //= require react
 //= require components
 //= require materialize-sprockets
-//= require underscore
-//= require gmaps/google
 //= require react_ujs
 //= require_tree .

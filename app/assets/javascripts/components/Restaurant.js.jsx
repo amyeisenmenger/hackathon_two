@@ -10,6 +10,7 @@ class Restaurant extends React.Component{
     this.setState({showRestaurant: !this.state.showRestaurant });
   }
   longRestaurant() {
+    let address = `http:\/\/maps.google.com/?q=${this.props.lat},${this.props.lng}`;
     let pricelevel = "$".repeat(this.props.priceLevel)
     let open = this.props.openingHours.open_now ? "Open Now" : "Closed";
       return(<div onClick={this.toggleRestaurant}>
@@ -18,15 +19,19 @@ class Restaurant extends React.Component{
               <div className='white-text center'>Rating: {this.props.rating}</div>
               <div className='white-text center'>Price Level: {pricelevel}</div>
               <div className='white-text center'>{open}</div>
+              <div className='center'><a className='white-text' href={address}>Map It!</a></div>
               <hr />
              </div>);
   }
   shortRestaurant(){
-    return(<div><div onClick={this.toggleRestaurant}>
+    let address = `http:\/\/maps.google.com/?q=${this.props.lat},${this.props.lng}`;
+    return(<div>
+              <div onClick={this.toggleRestaurant}>
               <h5 className='center orange-text darken-2'>{this.props.name}</h5>
-              <p className='center white-text'>{this.props.address}</p>
+              <p className='center white-text'>{this.props.address}</p><div className='center'><a className='white-text center' href={address}>Map It!</a></div>
               <hr />
-           </div></div>);
+              </div>
+           </div>);
   }
   render() {
     if(this.state.showRestaurant) {
