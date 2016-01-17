@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'finder#index'
 
   get '/search', to: 'finder#search', as: 'search'
+  get '/location', to: 'finder#location', as: 'location'
   get '/random_restaurant', to: 'finder#random_restaurant', as: 'random_restaurant'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

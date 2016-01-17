@@ -58,6 +58,17 @@ class Dashboard extends React.Component{
             </div>
            </div>);
   }
+  getLocation(e){
+    e.preventDefault();
+    $.ajax({
+      url: '/location',
+      type: 'GET',
+      dataType: 'JSON',
+      data: { restaurants: restaurants }
+    }).success( data => {
+      this.setState({ restaurants: data.restaurants });
+    });
+  }
   showAllRestaurants(){
     let restaurants = this.state.restaurants.map( restaurant => {
       return(<Restaurant key={`restaurant-${restaurant.id}`} {...restaurant} />);
@@ -78,6 +89,7 @@ class Dashboard extends React.Component{
                     <input className='center' autoFocus={true} type='text' placeholder='Enter Your Location' ref='search' />
                     <div className='center'>
                       <button type='submit' className='btn waves-effect waves-light'>Search</button>
+                      <button onClick={this.getLocation} className='btn waves-effect waves-light'>Get Location</button>
                     </div>
                   </form>
                 </div>
