@@ -23,8 +23,10 @@ class Dashboard extends React.Component{
     this.setState({ showRandom: !this.state.showRandom});
   }
   randomRestaurant(){
+
     let restaurant = this.state.restaurants[Math.floor(Math.random()*this.state.restaurants.length - 1 )];
     let pricelevel = "$".repeat(restaurant.priceLevel)
+    let address = `http:\/\/maps.google.com/?q=${restaurant.lat},${restaurant.lng}`;
     let open = restaurant.openingHours.open_now ? "Open Now" : "Closed";
     return(<div>
             <h1 className='center white-text'>Restaurant Finder</h1>
@@ -47,6 +49,8 @@ class Dashboard extends React.Component{
               <div className='white-text center'>Rating: {restaurant.rating}</div>
               <div className='white-text center'>Price Level: {pricelevel}</div>
               <div className='white-text center'>{open}</div>
+              <div className='center'><a className='white-text' href={address}><i className='material-icons'>add_location
+</i></a></div>
             </div>
             <br />
             <div className='center'>

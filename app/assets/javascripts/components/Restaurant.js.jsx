@@ -19,7 +19,10 @@ class Restaurant extends React.Component{
               <div className='white-text center'>Rating: {this.props.rating}</div>
               <div className='white-text center'>Price Level: {pricelevel}</div>
               <div className='white-text center'>{open}</div>
-              <div className='center'><a className='white-text' href={address}>Map It!</a></div>
+              <div className='center'>
+                <a className='white-text' href={address}><i className='material-icons'>add_location
+</i></a>
+              </div>
               <hr />
              </div>);
   }
@@ -28,7 +31,8 @@ class Restaurant extends React.Component{
     return(<div>
               <div onClick={this.toggleRestaurant}>
               <h5 className='center orange-text darken-2'>{this.props.name}</h5>
-              <p className='center white-text'>{this.props.address}</p><div className='center'><a className='white-text center' href={address}>Map It!</a></div>
+              <p className='center white-text'>{this.props.address}</p><div className='center'><a className='white-text' href={address}><i className='material-icons'>add_location
+</i></a></div>
               <hr />
               </div>
            </div>);

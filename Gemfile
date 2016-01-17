@@ -22,8 +22,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'geocoder'
-gem 'gmaps4rails'
-gem 'underscore-rails'
 gem 'google_places'
 gem 'haml-rails'
 gem 'materialize-sass'
