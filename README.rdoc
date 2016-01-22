@@ -16,7 +16,7 @@ Our Goals:
 
 Yet to be implemented:
 
-* Generate location based on IP/http request
+~~* Generate location based on IP/http request~~ Completed
 
 * Able to change radius to find closer/farther restaurants
 
