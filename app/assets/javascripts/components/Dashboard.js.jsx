@@ -1,19 +1,27 @@
 class Dashboard extends React.Component{
   constructor(props){
     super(props);
-    this.search = this.search.bind(this);
+    this.searchLocation = this.searchLocation.bind(this);
     this.toggleShowRandom = this.toggleShowRandom.bind(this);
     this.randomRestaurant = this.randomRestaurant.bind(this);
     this.showAllRestaurants = this.showAllRestaurants.bind(this);
+    this.getLocation = this.getLocation.bind(this);
+    this.showLocation = this.showLocation.bind(this);
     this.state = {restaurants: [], showRandom: false};
   }
-  search(e){
-    e.preventDefault();
+  searchLocation(e, latitude, longitude){
+    if(e)
+      e.preventDefault();
+    let location;
+    if(this.refs.search.value.length)
+      location = this.refs.search.value;
+    else
+      location = latitude + ", " + longitude
     $.ajax({
       url: '/search',
       type: 'GET',
       dataType: 'JSON',
-      data: { location: this.refs.search.value }
+      data: { location: location }
     }).success( data => {
       this.refs.search.value = null;
       this.setState({ restaurants: data.restaurants });
@@ -58,16 +66,20 @@ class Dashboard extends React.Component{
             </div>
            </div>);
   }
-  getLocation(e){
+  showLocation(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    this.searchLocation(null, latitude, longitude);
+  }
+  getLocation(e) {
     e.preventDefault();
-    $.ajax({
-      url: '/location',
-      type: 'GET',
-      dataType: 'JSON',
-      data: { restaurants: restaurants }
-    }).success( data => {
-      this.setState({ restaurants: data.restaurants });
-    });
+    if(navigator.geolocation){
+       // timeout at 60000 milliseconds (60 seconds)
+       let options = {timeout:60000};
+       navigator.geolocation.getCurrentPosition(this.showLocation);
+    } else {
+       alert("Sorry, browser does not support geolocation!");
+    }
   }
   showAllRestaurants(){
     let restaurants = this.state.restaurants.map( restaurant => {
@@ -85,7 +97,7 @@ class Dashboard extends React.Component{
             <div className='row'>
               <div className='card col s12 m6 offset-m3 z-depth-3'>
                 <div className='card-content'>
-                  <form onSubmit={this.search}>
+                  <form onSubmit={this.searchLocation}>
                     <input className='center' autoFocus={true} type='text' placeholder='Enter Your Location' ref='search' />
                     <div className='center'>
                       <button type='submit' className='btn waves-effect waves-light'>Search</button>

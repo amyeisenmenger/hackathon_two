@@ -2,6 +2,8 @@
 
 Our Application was focused on providing a simple and fast way to find a restaurant closeby for those times where parties can be indecisive when choosing a place.
 
+
+
 Our Goals:
 
 * Quick and resposive design for mobile
