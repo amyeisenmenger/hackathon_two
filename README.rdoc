@@ -2,7 +2,7 @@
 
 Our Application was focused on providing a simple and fast way to find a restaurant closeby for those times where parties can be indecisive when choosing a place.
 
-
+[LINK here] (http://shielded-atoll-2243.herokuapp.com/)
 
 Our Goals:
 
@@ -16,7 +16,7 @@ Our Goals:
 
 Yet to be implemented:
 
-~~* Generate location based on IP/http request~~ Completed
+~~* Generate location based on IP/http request~~ *Completed!*
 
 * Able to change radius to find closer/farther restaurants
 
